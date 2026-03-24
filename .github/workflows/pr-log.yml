@@ -1,0 +1,33 @@
+name: Log Merged PR
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  log-pr:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: Append PR entry to README
+        run: |
+          AUTHOR="${{ github.event.pull_request.user.login }}"
+          DATE="$(date -u +%Y-%m-%d)"
+          PR_TITLE="${{ github.event.pull_request.title }}"
+          echo "- ${AUTHOR} ${DATE} ${PR_TITLE}" >> README.md
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs: log merged PR #${{ github.event.pull_request.number }}"
+          git push

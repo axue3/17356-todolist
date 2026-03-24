@@ -25,3 +25,5 @@ Notes
 - Authentication uses Django's built-in username/password. In the UI, "Email" is used as the username.
 - Reminders are in-app: when you open the app during your configured morning window, you'll be prompted once per day.
 
+PR Log
+------
