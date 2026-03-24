@@ -30,3 +30,4 @@ PR Log
 - ryan-twang 2026-03-24 Add task count summary below task list
 - axue3 2026-03-24 ci: trigger workflow on PR open and merge into master
 - axue3 2026-03-24 ci: trigger workflow on PR open and merge into master
+- axue3 2026-03-24 run test yml
