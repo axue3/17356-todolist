@@ -310,6 +310,12 @@ select {
   transform: scale(1.05);
 }
 
+.task-summary {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  text-align: right;
+}
+
 @media (max-width: 860px) {
   .content-grid {
     grid-template-columns: 1fr;
