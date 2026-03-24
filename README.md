@@ -27,3 +27,4 @@ Notes
 
 PR Log
 ------
+- ryan-twang 2026-03-24 Add task count summary below task list
