@@ -2,14 +2,15 @@ name: Log Merged PR
 
 on:
   pull_request:
-    types: [closed]
+    types: [opened, closed]
+    branches: [master]
 
 permissions:
   contents: write
 
 jobs:
   log-pr:
-    if: github.event.pull_request.merged == true
+    if: github.event.action == 'opened' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
