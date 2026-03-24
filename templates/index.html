@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="content-grid">
+    <section class="panel">
+      <h1 class="panel-title">Your tasks</h1>
+
+      <div id="profile-warning" class="banner banner-warning" style="display:none">
+        <strong>Choose your university first.</strong>
+        <div>
+          This app organizes tasks by university designation. Go to
+          <a href="{% url 'settings' %}">Settings</a>.
+        </div>
+      </div>
+
+      <div id="reminder-banner" class="banner banner-reminder" style="display:none">
+        <div class="reminder-title">Good morning. Here's what's due today.</div>
+        <ul id="reminder-tasks" class="reminder-list"></ul>
+        <button id="reminder-got-it" class="btn btn-quiet" type="button">Got it</button>
+      </div>
+
+      <form id="add-task-form" class="task-form">
+        <div class="field">
+          <label for="task-title">Task</label>
+          <input id="task-title" name="title" maxlength="300" required placeholder="e.g., Problem set #4" />
+        </div>
+        <div class="field">
+          <label for="task-due-date">Due date</label>
+          <input id="task-due-date" name="due_date" type="date" required />
+        </div>
+        <button class="btn" type="submit">Add task</button>
+      </form>
+
+      <div class="list-header">
+        <div class="list-subtitle">Sorted by due date</div>
+      </div>
+
+      <ul id="task-list" class="task-list"></ul>
+      <div id="tasks-empty" class="muted" style="display:none">No tasks yet.</div>
+    </section>
+
+    <aside class="panel panel-aside">
+      <h2 class="panel-title">University</h2>
+      <div class="muted" id="current-university">Loading...</div>
+      <div class="field">
+        <label for="university-select">Designation</label>
+        <select id="university-select" class="select"></select>
+      </div>
+      <button id="university-save" class="btn btn-quiet" type="button">Save university</button>
+
+      <hr class="divider" />
+
+      <h2 class="panel-title">Tip</h2>
+      <p class="muted">
+        Tasks due today will appear in your morning reminder prompt (once per day).
+      </p>
+    </aside>
+  </div>
+{% endblock %}
+

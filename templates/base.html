@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CMU Class TODO</title>
+    <link rel="stylesheet" href="{% static 'todos/styles.css' %}" />
+    <script defer src="{% static 'todos/app.js' %}"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <div class="brand-title">Class TODO</div>
+          <div class="brand-subtitle">Due dates + morning reminders</div>
+        </div>
+        <nav class="app-nav">
+          <a class="nav-link" href="{% url 'home' %}">Tasks</a>
+          <a class="nav-link" href="{% url 'settings' %}">Settings</a>
+          <a class="nav-link nav-logout" href="{% url 'logout' %}">Log out</a>
+        </nav>
+      </header>
+
+      <main class="app-main">{% block content %}{% endblock %}</main>
+    </div>
+
+    <!-- Ensure CSRF token cookie is set for fetch() calls -->
+    <form id="csrf-form" method="post" style="display: none">{% csrf_token %}</form>
+  </body>
+</html>
+

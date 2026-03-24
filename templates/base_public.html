@@ -1,0 +1,21 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Class TODO</title>
+    <link rel="stylesheet" href="{% static 'todos/styles.css' %}" />
+  </head>
+  <body>
+    <div class="public-shell">
+      <header class="public-header">
+        <div class="brand-title">Class TODO</div>
+        <div class="brand-subtitle">Due dates + morning reminders</div>
+      </header>
+
+      <main class="public-main">{% block content %}{% endblock %}</main>
+    </div>
+  </body>
+</html>
+

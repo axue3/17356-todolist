@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="content-grid content-grid-narrow">
+    <section class="panel">
+      <h1 class="panel-title">Settings</h1>
+
+      <div id="settings-error" class="banner banner-error" style="display:none"></div>
+
+      <form id="profile-form" class="settings-form">
+        <div class="field">
+          <label for="university-select-settings">University designation</label>
+          <select id="university-select-settings" class="select" required></select>
+        </div>
+
+        <div class="field">
+          <label for="timezone">Timezone</label>
+          <input id="timezone" name="timezone" class="input" placeholder="e.g., America/New_York" maxlength="60" />
+        </div>
+
+        <div class="field">
+          <label class="checkbox">
+            <input id="reminder-enabled" type="checkbox" />
+            Enable morning reminder
+          </label>
+        </div>
+
+        <div class="field">
+          <label for="morning-hour">Morning hour</label>
+          <input id="morning-hour" type="number" min="0" max="23" step="1" />
+          <div class="muted">Shown once per day during the 2-hour window starting here.</div>
+        </div>
+
+        <button id="profile-save" class="btn" type="submit">Save settings</button>
+      </form>
+
+      <hr class="divider" />
+
+      <h2 class="panel-title">Reminder preview</h2>
+      <button id="reminder-preview" class="btn btn-quiet" type="button">Check what's due today</button>
+      <div id="reminder-preview-box" class="muted" style="margin-top: 10px"></div>
+    </section>
+  </div>
+{% endblock %}
+
