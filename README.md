@@ -31,3 +31,4 @@ PR Log
 - axue3 2026-03-24 ci: trigger workflow on PR open and merge into master
 - axue3 2026-03-24 ci: trigger workflow on PR open and merge into master
 - axue3 2026-03-24 run test yml
+- axue3 2026-03-24 run test yml
