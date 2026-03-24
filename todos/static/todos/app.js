@@ -48,15 +48,24 @@ function clear(elNode) {
 function renderTasks(tasks) {
   const list = el("task-list");
   const empty = el("tasks-empty");
+  const summary = el("task-summary");
   if (!list || !empty) return;
 
   clear(list);
 
   if (!tasks || tasks.length === 0) {
     empty.style.display = "block";
+    if (summary) summary.style.display = "none";
     return;
   }
   empty.style.display = "none";
+
+  if (summary) {
+    const total = tasks.length;
+    const done = tasks.filter((t) => t.completed).length;
+    summary.textContent = `${total} task${total !== 1 ? "s" : ""} \u2022 ${done} completed`;
+    summary.style.display = "block";
+  }
 
   for (const task of tasks) {
     const row = document.createElement("li");
@@ -71,6 +80,8 @@ function renderTasks(tasks) {
       try {
         row.classList.toggle("is-done", checkbox.checked);
         await apiSendJson("PATCH", `/api/tasks/${task.id}/`, { completed: checkbox.checked });
+        const refreshed = await apiGetJson("/api/tasks/");
+        renderTasks(refreshed.tasks);
       } catch (err) {
         row.classList.toggle("is-done", prevDone);
         console.error(err);
